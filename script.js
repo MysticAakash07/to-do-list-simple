@@ -29,6 +29,20 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.classList.add("active");
+    
+        // Update the complete button style based on the active task section
+        updateCompleteButtonStyle(tabName);
+    }
+
+    function updateCompleteButtonStyle(activeSection) {
+        const completeButtons = document.querySelectorAll(".completeButton");
+        completeButtons.forEach(button => {
+            if (activeSection === "currentTasks") {
+                button.textContent = "✅"; // Set check mark for "Current Tasks" section
+            } else if (activeSection === "completedTasks") {
+                button.textContent = "↩️"; // Set left arrow for "Completed Tasks" section
+            }
+        });
     }
 
     // Display "Current Tasks" section by default
@@ -63,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const span = document.createElement("span");
         span.textContent = taskText;
         const completeButton = document.createElement("button");
-        completeButton.textContent = "✅";
+        completeButton.textContent = "✅"; // Set initial text content to a checkmark;
         completeButton.classList.add("completeButton");
         completeButton.addEventListener("click", function() {
             span.classList.toggle("completed");
