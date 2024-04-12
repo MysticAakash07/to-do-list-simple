@@ -31,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
         evt.currentTarget.classList.add("active");
     }
 
+    // Display "Current Tasks" section by default
+    document.getElementById("currentTasks").style.display = "block";
+    document.getElementById("currentTasksBtn").classList.add("active");
+
     // Add event listeners to task buttons
     var currentTasksBtn = document.getElementById("currentTasksBtn");
     var completedTasksBtn = document.getElementById("completedTasksBtn");

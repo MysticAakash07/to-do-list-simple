@@ -62,7 +62,8 @@ input[type="text"] {
 
 
 #addButton {
-    padding: 18px 24px;
+    font-size: 1.6rem;
+    padding: 11px 20px;
     margin-left: 1px;
     background-color: #4CAF50;
     color: white;
@@ -83,7 +84,9 @@ input[type="text"] {
 
 #tasksList {
     margin-top: 10px; /* Add margin between input and task list */
-}/* Task section */
+}
+
+/* Task section */
 .tasks-section {
     display: flex;
     flex-direction: column;
@@ -122,16 +125,55 @@ ol{
     padding: 0;
 }
 li{
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 15px;
+    font-size: 1.6rem;
+    padding: 12px;
     margin-bottom: 10px;
     border-radius: 5px;
     display: flex;
     align-items: center;
-    text-align:center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 
 }
+/* Button Styles */
+.deleteButton,.completeButton ,#currentTasksBtn , #completedTasksBtn{
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.completeButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.deleteButton {
+    background-color: hsl(4, 90%, 80%);
+    color: white;
+}
+
+/* List Item Styles */
+li {
+    font-size: 1.6rem;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
 .completed {
     text-decoration: line-through;
 }
