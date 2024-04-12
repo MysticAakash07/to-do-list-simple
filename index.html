@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do-List</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body class="day-mode">
-    <h1>To-Do-List</h1>
-    <button id="dayButton"> ☀️</button>
-    <button id="nightButton"> 🌙</button>
+    <header>
+        To-Do List
+        <span class="mode-toggle">
+            <button id="dayButton"> ☀️</button>
+            <button id="nightButton"> 🌙</button>
+        </span>
+    </header>
+    <section class="addTask">
+        <input type="text" id="Task" placeholder="Enter a task...">
+        <button id="addButton">Add</button>
+    </section>
 </body>
 </html>
