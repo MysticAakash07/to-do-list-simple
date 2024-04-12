@@ -1,0 +1,17 @@
+/* Default styles */
+body {
+    background-color: #ffffff; /* Default background color */
+    color: red; /* Default text color */
+}
+
+/* Day mode styles */
+.day-mode {
+    background-color: #ffffff; /* Day mode background color */
+    color: #000000; /* Day mode text color */
+}
+
+/* Night mode styles */
+.night-mode {
+    background-color: #000000; /* Night mode background color */
+    color: #ffffff; /* Night mode text color */
+}
