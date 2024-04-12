@@ -12,31 +12,31 @@ body {
     flex-direction: column;
     justify-content: center; /* Center items horizontally */
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 50vh; /* Full viewport height */
 }
 
 header {
-    text-align: center; /* Center text within the header */
-    padding: 20px; /* Add padding for better spacing */
+    text-align: center; 
+    padding: 20px; 
     font-size: 40px;
     font-weight: bold;
 }
 
 /* Day mode styles */
 .day-mode {
-    background-color: #ffffff; /* Day mode background color */
-    color: #000000; /* Day mode text color */
+    background-color: #ffffff; 
+    color: #000000; 
 }
 
 /* Night mode styles */
 .night-mode {
-    background-color: #000000; /* Night mode background color */
-    color: #ffffff; /* Night mode text color */
+    background-color: #000000; 
+    color: #ffffff; 
 }
 .mode-toggle {
     position: absolute;
-    top: 20px; /* Adjust as needed */
-    right: 20px; /* Adjust as needed */
+    top: 20px; 
+    right: 20px; 
 }
 .mode-toggle button {
     border-radius: 1px;
@@ -74,4 +74,16 @@ input[type="text"] {
 .addTask {
     display: flex;
     align-items: center;
+}
+
+#tasksList {
+    margin-top: 10px; /* Add margin between input and task list */
+}
+
+li{
+    list-style: none;
+
+}
+.completed {
+    text-decoration: line-through;
 }
