@@ -17,11 +17,20 @@
     </header>
     <section class="addTask">
         <input type="text" id="Task" placeholder="Enter a task...">
-        <button id="addButton">Add</button>
+        <button id="addButton" ">Add</button>
     </section>
-    <section id="tasksList">
-        <ol id="tasks">
-        </ol>
+    <section class="tasks-section">
+        <div class="task-buttons">
+            <button id="currentTasksBtn" class="tablinks" onclick="openTab(event, 'currentTasks')">Current Tasks</button>
+            <button id="completedTasksBtn" class="tablinks" onclick="openTab(event, 'completedTasks')">Completed Tasks</button>
+        </div>
+        <div id="currentTasks" class="task-content">
+            <ol id="currentTasksList"></ol>
+        </div>
+        <div id="completedTasks" class="task-content">
+            <ol id="completedTasksList"></ol>
+        </div>
     </section>
+    
 </body>
 </html>

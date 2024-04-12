@@ -16,9 +16,35 @@ document.addEventListener("DOMContentLoaded", function() {
         body.classList.add('night-mode');
     }
 
+    // Function to toggle between task sections
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("task-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+
+    // Add event listeners to task buttons
+    var currentTasksBtn = document.getElementById("currentTasksBtn");
+    var completedTasksBtn = document.getElementById("completedTasksBtn");
+    currentTasksBtn.addEventListener("click", function(event) {
+        openTab(event, 'currentTasks');
+    });
+    completedTasksBtn.addEventListener("click", function(event) {
+        openTab(event, 'completedTasks');
+    });
+
     const addButton = document.getElementById("addButton");
     const inputTask = document.getElementById("Task");
-    const taskList = document.getElementById("tasks");
+    const currentTasksList = document.getElementById("currentTasksList");
+    const completedTasksList = document.getElementById("completedTasksList");
 
     addButton.addEventListener("click", function() {
         const taskText = inputTask.value.trim();
@@ -37,6 +63,9 @@ document.addEventListener("DOMContentLoaded", function() {
         completeButton.classList.add("completeButton");
         completeButton.addEventListener("click", function() {
             span.classList.toggle("completed");
+            const task = this.parentElement;
+            const list = task.parentElement.id === "currentTasksList" ? completedTasksList : currentTasksList;
+            list.appendChild(task);
         });
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "❌";
@@ -47,6 +76,6 @@ document.addEventListener("DOMContentLoaded", function() {
         li.appendChild(span);
         li.appendChild(completeButton);
         li.appendChild(deleteButton);
-        taskList.appendChild(li);
+        currentTasksList.appendChild(li);
     }
 });
