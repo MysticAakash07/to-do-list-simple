@@ -36,6 +36,17 @@ header {
     color: #ffffff; 
 }
 
+.day-mode li {
+    background-color: white;
+    color: black;
+}
+
+.night-mode li {
+    background-color: black;
+    color: white;
+}
+
+
 /* Mode Toggle Button Styles */
 .mode-toggle {
     position: absolute;
@@ -121,6 +132,7 @@ input[type="text"] {
 
 /* List Item Styles */
 li {
+    border: 2px solid aqua;
     font-size: 1.6rem;
     padding: 12px;
     margin-bottom: 10px;
@@ -128,7 +140,6 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f9f9f9;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 

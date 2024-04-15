@@ -64,11 +64,29 @@ document.addEventListener("DOMContentLoaded", function() {
     const currentTasksList = document.getElementById("currentTasksList");
     const completedTasksList = document.getElementById("completedTasksList");
 
+    // Load tasks from localStorage on page load
+    loadTasks();
+
     addButton.addEventListener("click", function() {
         const taskText = inputTask.value.trim();
         if (taskText !== "") {
             addTaskToList(taskText);
             inputTask.value = "";
+        }
+    });
+
+    // Delegate event handling to the task list for complete and delete buttons
+    currentTasksList.addEventListener("click", function(event) {
+        if (event.target.classList.contains("completeButton")) {
+            const task = event.target.parentElement;
+            task.classList.toggle("completed");
+            const list = task.parentElement.id === "currentTasksList" ? completedTasksList : currentTasksList;
+            list.appendChild(task);
+            saveTasks(); // Save tasks to localStorage after completing a task
+        } else if (event.target.classList.contains("deleteButton")) {
+            const task = event.target.parentElement;
+            task.remove();
+            saveTasks(); // Save tasks to localStorage after deleting a task
         }
     });
 
@@ -79,21 +97,26 @@ document.addEventListener("DOMContentLoaded", function() {
         const completeButton = document.createElement("button");
         completeButton.textContent = "✅"; // Set initial text content to a checkmark;
         completeButton.classList.add("completeButton");
-        completeButton.addEventListener("click", function() {
-            span.classList.toggle("completed");
-            const task = this.parentElement;
-            const list = task.parentElement.id === "currentTasksList" ? completedTasksList : currentTasksList;
-            list.appendChild(task);
-        });
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "❌";
         deleteButton.classList.add("deleteButton");
-        deleteButton.addEventListener("click", function() {
-            li.remove();
-        });
         li.appendChild(span);
         li.appendChild(completeButton);
         li.appendChild(deleteButton);
         currentTasksList.appendChild(li);
+        saveTasks(); // Save tasks to localStorage after adding a new task
     }
+
+    // Function to save tasks to localStorage
+    function saveTasks() {
+        localStorage.setItem('tasks', currentTasksList.innerHTML);
+    }
+
+    // Function to load tasks from localStorage
+    function loadTasks() {
+        const tasks = localStorage.getItem('tasks') || ''; // Set an empty string if no tasks are found
+        if (tasks.trim() !== '') {
+            currentTasksList.innerHTML = tasks;
+        }
+    }    
 });
