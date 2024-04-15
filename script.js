@@ -90,6 +90,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // Function to save tasks to localStorage
+    function saveTasks() {
+        const tasksHTML = currentTasksList.innerHTML.trim();
+        if (tasksHTML !== "") {
+            localStorage.setItem('tasks', tasksHTML);
+        } else {
+            localStorage.removeItem('tasks'); // Remove the key if tasksHTML is empty
+        }
+    }
+
+    // Function to load tasks from localStorage
+    function loadTasks() {
+        console.log("Loading tasks from localStorage...");
+        const tasks = localStorage.getItem('tasks');
+        const tempContainer = document.createElement('div');
+        tempContainer.innerHTML = tasks;
+        const listItems = tempContainer.querySelectorAll('li');
+        if (listItems.length > 0) {
+            currentTasksList.innerHTML = tasks;
+        }
+    }       
+    
+    // Function to add a new task
     function addTaskToList(taskText) {
         const li = document.createElement("li");
         const span = document.createElement("span");
@@ -106,17 +129,4 @@ document.addEventListener("DOMContentLoaded", function() {
         currentTasksList.appendChild(li);
         saveTasks(); // Save tasks to localStorage after adding a new task
     }
-
-    // Function to save tasks to localStorage
-    function saveTasks() {
-        localStorage.setItem('tasks', currentTasksList.innerHTML);
-    }
-
-    // Function to load tasks from localStorage
-    function loadTasks() {
-        const tasks = localStorage.getItem('tasks') || ''; // Set an empty string if no tasks are found
-        if (tasks.trim() !== '') {
-            currentTasksList.innerHTML = tasks;
-        }
-    }    
 });
